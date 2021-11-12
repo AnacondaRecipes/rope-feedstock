@@ -11,6 +11,7 @@ source:
 
 build:
   number: 0
+  skip: True # [py<36]
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
@@ -20,9 +21,8 @@ requirements:
     - pip
     - wheel
     - setuptools
-
   run:
-    - python
+    - python >=3.6
 
 test:
   imports:
@@ -38,13 +38,14 @@ test:
     - rope.refactor.importutils
   requires:
     - pip
+    - python <3.10
   commands:
     - pip check
 
 about:
   home: https://github.com/python-rope/rope
   license_file: COPYING
-  license: LGPL 3.0
+  license: LGPL-3.0-or-later
   license_family: LGPL
   summary: A python refactoring library
   dev_url: https://github.com/python-rope/rope
