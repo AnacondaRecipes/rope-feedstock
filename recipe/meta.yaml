@@ -46,7 +46,7 @@ test:
 about:
   home: https://github.com/python-rope/rope
   license_file: COPYING
-  license: LGPL 3.0-or-later
+  license: LGPL-3.0-or-later
   license_family: LGPL
   summary: A python refactoring library
   dev_url: https://github.com/python-rope/rope
