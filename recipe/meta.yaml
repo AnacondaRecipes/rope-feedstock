@@ -1,5 +1,5 @@
 {% set name = "rope" %}
-{% set version = "0.19.0" %}
+{% set version = "0.21.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 64e6d747532e1f5c8009ec5aae3e5523a5bcedf516f39a750d57d8ed749d90da
+  sha256: 366789e069a267296889b2ee7631f9278173b5e7d468f2ea08abe26069a52aef
 
 build:
   number: 0
+  skip: True # [py<36]
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
@@ -22,7 +23,7 @@ requirements:
     - setuptools
 
   run:
-    - python
+    - python >=3.6
 
 test:
   imports:
@@ -38,13 +39,14 @@ test:
     - rope.refactor.importutils
   requires:
     - pip
+    - python <3.10
   commands:
     - pip check
 
 about:
   home: https://github.com/python-rope/rope
   license_file: COPYING
-  license: LGPL 3.0
+  license: LGPL-3.0-or-later
   license_family: LGPL
   summary: A python refactoring library
   dev_url: https://github.com/python-rope/rope
