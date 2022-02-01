@@ -37,6 +37,7 @@ test:
     - rope.refactor.importutils
   requires:
     - pip
+    - python <3.10
   commands:
     - pip check
 
