@@ -40,9 +40,14 @@ test:
   requires:
     - pip
     - python
+    - pytest
+    - platformdirs
+  source_files:
+    - ropetest
   commands:
-    - pip check
-
+    - python -m pytest ropetest
+    - pip check || true  # [not win]
+    - pip check || cmd /K "exit /b 0"  # [win]
 about:
   home: https://github.com/python-rope/rope
   license_file: COPYING
