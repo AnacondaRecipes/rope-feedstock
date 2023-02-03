@@ -57,8 +57,7 @@ about:
   description: |
     Rope is the world's most advanced open source Python refactoring library (yes, I totally stole that tagline from Postgres).
   dev_url: https://github.com/python-rope/rope
-  doc_url: https://pypi.python.org/pypi/rope
-  doc_source_url: https://github.com/python-rope/rope/tree/master/docs
+  doc_url: https://github.com/python-rope/rope/tree/master/docs
 
 extra:
   recipe-maintainers:
