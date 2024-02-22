@@ -1,5 +1,5 @@
 {% set name = "rope" %}
-{% set version = "1.7.0" %}
+{% set version = "1.12.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ba39581d0f8dee4ae8b5b5e82e35d03cebad965ccb127b7eaab9755cdc85e85a
+  sha256: 93a1bb991fbf0426e8d415102d1c092ccc42e826ce9a42c4d61ce53d7786d9d9
 
 build:
   number: 0
-  skip: True # [py<37]
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+  skip: True # [py<38]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
@@ -23,6 +23,7 @@ requirements:
   run:
     - python
     - pytoolconfig >=1.2.2
+    - platformdirs >=1.4.4 # dependency is on pytoolconfig global
 
 test:
   imports:
@@ -39,12 +40,13 @@ test:
     - rope.refactor.importutils
   requires:
     - pip
-    - pytest
+    - pytest >=7.0.1
+    - pytest-timeout >=2.1.0
   source_files:
     - ropetest
   commands:
-    - pip list
     - pip check
+    - pytest -v
 
 about:
   home: https://github.com/python-rope/rope
