@@ -23,7 +23,9 @@ requirements:
   run:
     - python
     - pytoolconfig >=1.2.2
-    - platformdirs >=1.4.4 # dependency is on pytoolconfig global
+    # platformdirs dependency is on pytoolconfig global
+    # at time of build, pytoolconfig 1.2.6 is on main, which requires platformdirs >=1.4.4 
+    - platformdirs >=1.4.4 
 
 test:
   imports:
