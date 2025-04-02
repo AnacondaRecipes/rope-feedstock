@@ -48,7 +48,9 @@ test:
     - ropetest
   commands:
     - pip check
-    - pytest -v
+    # test failures with python 3.13: https://github.com/python-rope/rope/issues/801
+    - pytest -v -k "not (test_hint_parametrized_iterable or test_hint_parametrized_iterator)" # [py==313]
+    - pytest -v # [py<313]
 
 about:
   home: https://github.com/python-rope/rope
