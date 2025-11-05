@@ -26,6 +26,10 @@ requirements:
     # platformdirs dependency is on pytoolconfig global
     # at time of build, pytoolconfig 1.2.6 is on main, which requires platformdirs >=1.4.4 
     - platformdirs >=1.4.4 
+  run_constrained:
+    - toml >=0.10.2
+    - twine >=4.0.2
+    - pip-tools >=6.12.1
 
 test:
   imports:
@@ -50,7 +54,7 @@ test:
     - pip check
     # test failures with python 3.13: https://github.com/python-rope/rope/issues/801
     - pytest -v -k "not (test_hint_parametrized_iterable or test_hint_parametrized_iterator)" # [py==313]
-    - pytest -v # [py<313]
+    - pytest -v  # [py<313]
 
 about:
   home: https://github.com/python-rope/rope
