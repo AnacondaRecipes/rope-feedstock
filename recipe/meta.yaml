@@ -1,18 +1,18 @@
 {% set name = "rope" %}
-{% set version = "1.13.0" %}
+{% set version = "1.14.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 51437d2decc8806cd5e9dd1fd9c1306a6d9075ecaf78d191af85fc1dfface880
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 8803e3b667315044f6270b0c69a10c0679f9f322ed8efe6245a93ceb7658da69
 
 build:
   number: 0
-  skip: True # [py<38]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  skip: true # [py<38]
 
 requirements:
   host:
@@ -61,7 +61,7 @@ about:
   description: |
     Rope is the world's most advanced open source Python refactoring library (yes, I totally stole that tagline from Postgres).
   dev_url: https://github.com/python-rope/rope
-  doc_url: https://rope.readthedocs.io/
+  doc_url: https://rope.readthedocs.io
 
 extra:
   recipe-maintainers:
