@@ -1,13 +1,13 @@
 {% set name = "rope" %}
-{% set version = "1.15.0" %}
+{% set version = "1.15.2" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a9e82c9f5ca5a1054387c22fdf6c9de9e948af556138bda57d4da81d3378793a
+  sha256: 7ce304aa86350d9454533b6817d0c7c01301b0a4fad356d8372b5d77df35756f
 
 build:
   number: 0
@@ -51,9 +51,7 @@ test:
     - ropetest
   commands:
     - pip check
-    # test failures with python 3.13: https://github.com/python-rope/rope/issues/801
-    - pytest -v -k "not (test_hint_parametrized_iterable or test_hint_parametrized_iterator)"  # [py==313]
-    - pytest -v  # [py<313]
+    - pytest -vv
 
 about:
   home: https://github.com/python-rope/rope
