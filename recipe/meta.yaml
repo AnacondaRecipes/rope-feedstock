@@ -22,8 +22,10 @@ requirements:
   run:
     - python
     - pytoolconfig >=1.2.2
-    # pytoolconfig is required with its "global" extra upstream, which pulls
-    # platformdirs; pytoolconfig 1.3.1 on pkgs/main requires platformdirs >=3.11.0
+    # pytoolconfig is required with its "global" extra upstream
+    # (pytoolconfig >=1.2.2). The extra's backend changed: 1.2.x uses appdirs,
+    # 1.3.x imports platformdirs, so both are needed for the allowed range.
+    - appdirs >=1.4.4
     - platformdirs >=3.11.0
   run_constrained:
     - toml >=0.10.2
